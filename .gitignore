@@ -1,8 +1,24 @@
 # Cache objects
-packer_cache/
+**/packer_cache
 
 # Crash log
 crash.log
 
 # For built boxes
-*.box
+**/*.box
+
+# Artefacts
+**/packer_output
+**/output-*
+
+# Vagrant
+**/.vagrant
+vagrant/**/config.yaml
+vagrant/**/extras
+
+
+# Private content
+**/authorized_keys*
+
+# Misc
+tags

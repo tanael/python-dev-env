@@ -1,0 +1,24 @@
+---
+packages:
+    - fortune
+    - git
+    - moreutils
+    - stow
+    - htop
+    - iotop
+    - tmux
+    - ncdu
+    - powerline
+    - fonts-powerline
+    - python3-powerline
+    - vim
+    - vim-addon-manager
+    - exuberant-ctags
+    - neovim
+    - emacs
+    - aspell
+    - ripgrep
+    - aptitude
+    - devscripts
+    - firefox-esr
+    - fonts-inconsolata
