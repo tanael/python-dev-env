@@ -39,6 +39,23 @@ Vagrant.configure("2") do |config|
     inline: "apt-get install -y #{package}"
   end
 
+  # Build SEAL-Python
+  config.vm.provision "shell",
+  env: {"DEBIAN_FRONTEND" => "noninteractive"},
+  inline: <<-SHELL
+    git clone https://github.com/Huelse/SEAL-Python.git
+    cd SEAL-Python
+    pip3 install -r requirements.txt
+    git submodule init && git submodule update
+    git submodule update --remote
+    cd SEAL
+    cmake -S . -B build -DSEAL_USE_MSGSL=OFF -DSEAL_USE_ZLIB=OFF -DSEAL_USE_ZSTD=OFF
+    cmake --build build
+    cd ..
+    python3 setup.py build_ext -i
+    mv seal.cpython-39-x86_64-linux-gnu.so /usr/local/lib/python3.9/dist-packages/
+  SHELL
+
   # copy ssh config
   config.vm.provision "file",
     source: "/home/#{user_conf['localuser']}/.ssh/config",
